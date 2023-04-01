@@ -36,7 +36,7 @@ This resource includes:
 
 - Install all dependencies and make sure they run
 - Upload dom_fuel SQL into your database
-- Setup permissions to use the admin menu
+- Setup permissions in your server cfg to use the admin menu
 ```lua
 add_ace group.admin admingasstationmenu allow
 ```
