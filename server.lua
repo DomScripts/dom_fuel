@@ -41,6 +41,10 @@ RegisterNetEvent('dom_fuel:AdminGrabStationInfo', function(input)
 end)
 
 local function StartDataBaseTimer(result)
+    if GlobalState.Database then return end 
+		
+    GlobalState.Database = true
+	
     while true do 
         Wait(600000)
         for i = 1, #result do 
@@ -59,10 +63,6 @@ end
 -- Grabs info from database to create gas stations and create statebags
 RegisterNetEvent('dom_fuel:GrabStationOwnership', function()
     local _source = source
-    
-    if GlobalState.Database then return end 
-		
-    GlobalState.Database = true
 		
     MySQL.query("SELECT GasStation, id, Gas, Money, Price FROM dom_fuel WHERE Owner IS NOT NULL", {},
     function(result)
