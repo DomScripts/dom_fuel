@@ -62,6 +62,7 @@ RegisterNetEvent('dom_fuel:CreateOwnedGasStations', function(result)
                     }}
                 })
                 -- Creates target for the pumps
+		-- Someone tell Linden to allow a way to pass a variable when referencing a function in a ox_target on select so I don't have to nest a rainbow
                 for b = 1, #v.pumps do 
                     Target:addSphereZone({
                         coords = v.pumps[b],
