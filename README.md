@@ -14,6 +14,8 @@ https://youtu.be/FRgWy_kbDjg
 
 <p>It's made to be an install and forget about it script where admins can set gas station owners with many options</p>
 
+<p>Owners and stats are saved into the database and not reset every server restart</p>
+
 This resource includes:
 
 - Admin menu to assign owners and check stats
