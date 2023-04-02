@@ -60,7 +60,10 @@ end
 RegisterNetEvent('dom_fuel:GrabStationOwnership', function()
     local _source = source
     
-    if GLobalState.Database then return end 
+    if GlobalState.Database then return end 
+		
+    GlobalState.Database = true
+		
     MySQL.query("SELECT GasStation, id, Gas, Money, Price FROM dom_fuel WHERE Owner IS NOT NULL", {},
     function(result)
         if result then 
