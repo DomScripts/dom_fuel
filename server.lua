@@ -41,22 +41,17 @@ RegisterNetEvent('dom_fuel:AdminGrabStationInfo', function(input)
 end)
 
 local function StartDataBaseTimer(result)
-    if not GlobalState.Database then GlobalState.Database = true end
-
-    if GlobalState.Database == true then 
-        local start = true 
-        while start do 
+    while true do 
         Wait(600000)
-            for i = 1, #result do 
-                    local queries = {
-                        {query = "UPDATE dom_fuel SET Gas = ? WHERE GasStation = ?", values = {GlobalState[result[i].GasStation].gas, result[i].GasStation}},
-                        {query = "UPDATE dom_fuel SET Money = ? WHERE GasStation = ?", values = {GlobalState[result[i].GasStation].money, result[i].GasStation}},
-                        {query = "UPDATE dom_fuel SET Price = ? WHERE GasStation = ?", values = {GlobalState[result[i].GasStation].price, result[i].GasStation}}
-                    }
-                    MySQL.transaction(queries, function(success)
-                        if success then print('Updated dom_fuel database') else print('Couldn\'t update databse') end 
-                    end)
-            end 
+        for i = 1, #result do 
+                local queries = {
+                    {query = "UPDATE dom_fuel SET Gas = ? WHERE GasStation = ?", values = {GlobalState[result[i].GasStation].gas, result[i].GasStation}},
+                    {query = "UPDATE dom_fuel SET Money = ? WHERE GasStation = ?", values = {GlobalState[result[i].GasStation].money, result[i].GasStation}},
+                    {query = "UPDATE dom_fuel SET Price = ? WHERE GasStation = ?", values = {GlobalState[result[i].GasStation].price, result[i].GasStation}}
+                }
+                MySQL.transaction(queries, function(success)
+                    if success then print('Updated dom_fuel database') else print('Couldn\'t update databse') end 
+                end)
         end 
     end 
 end 
@@ -64,6 +59,8 @@ end
 -- Grabs info from database to create gas stations and create statebags
 RegisterNetEvent('dom_fuel:GrabStationOwnership', function()
     local _source = source
+    
+    if GLobalState.Database then return end 
     MySQL.query("SELECT GasStation, id, Gas, Money, Price FROM dom_fuel WHERE Owner IS NOT NULL", {},
     function(result)
         if result then 
@@ -73,7 +70,8 @@ RegisterNetEvent('dom_fuel:GrabStationOwnership', function()
                     GlobalState[result[i].GasStation] = {name = result[i].GasStation, gas = result[i].Gas, money = result[i].Money, price = result[i].Price}
                 end
             end 
-            StartDataBaseTimer(result)
+            
+	StartDataBaseTimer(result)
         else 
             print('got no result')
         end 
