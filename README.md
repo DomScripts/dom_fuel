@@ -10,7 +10,7 @@ https://youtu.be/FRgWy_kbDjg
 
 ## What is this?
 
-<p>This is a standalone all in one player owned gas station script with a few dependencies to make sure everything runs</p>
+<p>This is a all in one player owned gas station script with a few dependencies to make sure everything runs</p>
 
 <p>It's made to be an install and forget about it script where admins can set gas station owners with many options</p>
 
