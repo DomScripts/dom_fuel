@@ -41,11 +41,11 @@ RegisterNetEvent('dom_fuel:AdminGrabStationInfo', function(input)
 end)
 
 local function StartDataBaseTimer(result)
-    if not GlobalState.Database then GlobalState.Database = true end
+    if GlobalState.Database then return end
 
-    if GlobalState.Database == true then 
-        local start = true 
-        while start do 
+    GlobalState.Database = true
+    
+    while true do 
         Wait(600000)
             for i = 1, #result do 
                     local queries = {
@@ -57,8 +57,7 @@ local function StartDataBaseTimer(result)
                         if success then print('Updated dom_fuel database') else print('Couldn\'t update databse') end 
                     end)
             end 
-        end 
-    end 
+    end  
 end 
 
 -- Grabs info from database to create gas stations and create statebags
