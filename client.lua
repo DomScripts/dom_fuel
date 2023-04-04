@@ -107,7 +107,7 @@ RegisterNetEvent('dom_fuel:CreateOwnedGasStations', function(result)
                                                                 {
                                                                     title = 'Fuel Car',
                                                                     onSelect = function()
-                                                                        local vehicle = lib.getClosestVehicle(GetEntityCoords(PlayerPedId()), 2, false)
+                                                                        local vehicle = lib.getClosestVehicle(GetEntityCoords(PlayerPedId()), 4, false)
                                                                         local state = Entity(vehicle).state
                                                                         local fuel  = state.fuel or GetVehicleFuelLevel(vehicle)
                                                                         local price, money = 0
