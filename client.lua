@@ -51,7 +51,7 @@ RegisterNetEvent('dom_fuel:CreateOwnedGasStations', function(result)
                         label = 'Gas Station Details',
                         onSelect = function()
                             lib.callback('dom_fuel:GetIdentifier', false, function(player)
-                                if player ~= result[1].id then 
+                                if player ~= result[i].id then 
                                     lib.notify({title = v.name..' Gas Station', description = 'You don\'t have the log-in', type = 'error'})
                                 else 
                                     local station = v.name
