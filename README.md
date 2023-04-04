@@ -1,6 +1,6 @@
 ## Preview
 
-- 
+https://youtu.be/FRgWy_kbDjg  
 
 ## Resmon
 
@@ -10,9 +10,11 @@
 
 ## What is this?
 
-<p>This is a standalone all in one player owned gas station script with a few dependencies to make sure everything runs</p>
+<p>This is a all in one player owned gas station script with a few dependencies to make sure everything runs</p>
 
 <p>It's made to be an install and forget about it script where admins can set gas station owners with many options</p>
+
+<p>Owners and stats are saved into the database and not reset every server restart</p>
 
 This resource includes:
 
@@ -36,7 +38,7 @@ This resource includes:
 
 - Install all dependencies and make sure they run
 - Upload dom_fuel SQL into your database
-- Setup permissions to use the admin menu
+- Setup permissions in your server cfg to use the admin menu
 ```lua
 add_ace group.admin admingasstationmenu allow
 ```

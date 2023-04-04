@@ -51,7 +51,7 @@ RegisterNetEvent('dom_fuel:CreateOwnedGasStations', function(result)
                         label = 'Gas Station Details',
                         onSelect = function()
                             lib.callback('dom_fuel:GetIdentifier', false, function(player)
-                                if player ~= result[1].id then 
+                                if player ~= result[i].id then 
                                     lib.notify({title = v.name..' Gas Station', description = 'You don\'t have the log-in', type = 'error'})
                                 else 
                                     local station = v.name
@@ -62,6 +62,7 @@ RegisterNetEvent('dom_fuel:CreateOwnedGasStations', function(result)
                     }}
                 })
                 -- Creates target for the pumps
+		-- Someone tell Linden to allow a way to pass a variable when referencing a function in a ox_target on select so I don't have to nest a rainbow
                 for b = 1, #v.pumps do 
                     Target:addSphereZone({
                         coords = v.pumps[b],
