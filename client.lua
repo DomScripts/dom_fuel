@@ -539,7 +539,7 @@ function FuelOrderStart(fuel, cost, duration, dropoff, station)
     end 
 end 
 
-function setFuel(state, vehicle, fuel, replicate)
+local function setFuel(state, vehicle, fuel, replicate)
 	if DoesEntityExist(vehicle) then
 		SetVehicleFuelLevel(vehicle, fuel)
 
